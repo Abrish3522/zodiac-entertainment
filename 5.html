@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+     <style type="text/css">
+        *{
+            box-sizing: border-box;
+        }
+        html,body{
+            margin: 0;
+            padding: 0;
+            background-image: url(css/images/body-bg.gif); 
+            overflow-x: hidden;
+            font-family: tahoma;
+        }
+        .row::after{
+            content:"";
+            display: block;
+            clear: both;
+        }
+        .row>div{
+            float: left;
+            color: white;
+            height:inherit;
+            padding: 10px;
+        }
+        .side-nav{
+            width: 15%;
+            background: none;
+            height: 100%;
+            
+        }
+        .content{
+            width: 85%;
+            background-image: url(css/images/body-bg.gif);
+         }
+                 h3{
+            font-size: 48px;
+            font-style: normal;
+            font-family: monospace;
+            font-weight: 300;
+            color: chocolate;
+            text-align: center;
+            text-decoration: none;
+        }
+         h4{
+             
+            font-size: 38px;
+            font-style: normal;
+            font-family: monospace;
+            font-weight: 300;
+            color: aqua;
+            text-align: center;
+            text-decoration: none;
+         }
+        .side-nav a{
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+        .side-nav>ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            line-height: 175%;
+        }
+        .side-nav>ul>li>a{
+            padding: 10px;
+            text-decoration: none;
+            background-image: url(css/images/body-bg.gif);
+        }
+        .side-nav>ul>li>a:hover{
+            background: #173459;
+            color:#f8f9f9;
+         }
+         .content .top-nav{
+             margin-top: 50px;
+         }
+         .content .top-nav a{
+             text-decoration: none;
+             color: white;
+             display: block;
+         }
+         .content .top-nav > ul{
+             list-style-type: none;
+             margin: 0;
+             padding: 0;
+         }
+         .content .top-nav > ul > li > a{
+             padding: 10px;
+             background: lightgray;
+         }
+         .content .top-nav > ul > li > a:hover{
+             background: #173459;
+             color: #f8f9f9;
+         }
+         .content .top-nav .active{
+             background: #173459;
+             color: #f8f9f9;
+         }
+         .content .top-nav > ul > li{
+             float: left;
+             width: 25%;
+             text-align: center;
+         }
+         .album{
+             display: flex;
+             padding: 10px;
+         }
+         .gallary {
+             margin: 0;
+             padding right: 50px;
+             width: 20%;
+             box-shadow: 0 15px 30px rgba(0,0,0,0.30), 0 11px 8px rgba(0,0,0,0.22);
+             margin-bottom: 20px;
+             margin-right: 10px;
+             transition-duration: 2s;
+         }
+            .gallary:hover{
+             width: 20%;
+              box-shadow: 0 15px 30px rgba(0,0,0,0.30), 0 11px 8px rgba(0,0,0,0.22);
+              height: 220px;
+         }
+         img{
+             width: 100%;
+             height: auto;
+             padding: 10px;
+         }
+         
+         .detail{
+             padding: 0 15px 15px 15px;
+             text-align: center;
+             color: black;
+             display: none;
+             height: 220px;
+             overflow-y: scroll;
+         }
+         
+         .gallary:hover img{
+             display: none;
+         }
+         .gallary:hover .gallary{
+             background-color: white;
+         }
+         .gallary:hover .detail{
+             display: block;
+             color:blue;
+         }
+         dt{
+             text-align: left;
+             font-weight: bold;
+             color: aqua;
+         }
+         dd{
+             text-align: center;
+             color: white;
+             border: 1px solid aqua;
+         }
+         
+         input{
+             border: 3px solid #32e17c;
+             height: 40px;
+             width: 300px;
+             border-radius: 50px;
+             padding: 0px 10px;
+             float: left;
+         }
+         footer{
+             color: #fff;
+             background: #333;
+             position: relative;
+             font-size: 80%;
+         }
+         .footer-copyright{
+             width: 100%;
+             height:10px;;
+             background: #111;
+             padding: 10px;
+             position: absolute;
+             bottom: 0px;
+             left: 0px;
+         }
+         .footer-body{
+             margin-bottom:none;
+             padding: 30px;
+         }
+         .footer-body > div:first-child{
+             font-size: 150%;
+         }
+         .footer-body ul{
+             list-style-type: none;
+             margin: 0px;
+             padding: 0px;
+             text-align: center;
+         }
+         .footer-body li > a{
+             color: white;
+             text-decoration: none;
+             margin-bottom:none;
+         }
+         .pagination-container{
+             text-align: center;
+         }
+         .pagination{
+             display: inline-block;
+             margin: 0;
+             padding: 0;
+             border: 1px solid #0076ff;
+             border-radius: 5px;
+         }
+         .pagination li{
+             display: inline;
+         }
+         .pagination a{
+             color: black;
+             text-decoration: none;
+             padding: 7px 14px;
+             float: left;
+             border-right: 1px solid #0076ff;
+             transition-duration: 1s;
+         }
+         .pagination a:hover{
+             background: #0076ff;
+             color:white;
+         }
+         .pagination li:last-child>a{
+             border:none;
+         }
+         .active{
+             color: white;
+             background: #0076ff;
+         }
+        .header{
+            
+            text-align:topright;
+            height:fit-content;
+            width:100%;
+            color:white;
+            background-image: url(css/images/zod1.jpg);
+            background-size:cover;
+            background-repeat:no-repeat;
+            backgroung-position:center center;
+           
+            
+         }
+         
+       .headingg{
+
+        font-size:400%;
+        position:absolute;
+        top:8px;
+        right:16px;
+        }
+         }
+    </style>
+    </head>
+    <body>
+        <div class="header">
+        <div class="headingg">ZODIAC ENTERTAINMENT</div>
+ <div class="side-nav">
+            <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="contuct.html">CONTACT US</a></li>
+            <li><a href="social.html">SOCIAL MEDIA</a></li>
+            <li><a href="location.html">LOCATION</a></li>
+            </ul>
+            </div>
+        </div>
+        <div class="content">
+            
+            <div class="top-nav">
+            <ul>
+                <li><a href="movie.html">Featured</a></li>
+                <li><a href="#">Series</a></li>
+                <li><a href="#">Korean</a></li>
+                <li><a href="all.html" class="active">ALL movies</a></li>
+                </ul>
+                 </div>
+            <div class="main">
+                <div class="album">
+                    <div class="gallary">
+                <div class="detail">
+                <dl>
+                    <dt>TITLE</dt>
+                    <dd  class="title">X-MEN</dd>
+                    <dt>AUTHOR</dt>
+                    <dd  class="author">Natnael Mengistu</dd>
+                    <dt>GENRES</dt>
+                    <dd class="genres">Action</dd>
+                    <dt>RATING</dt>
+                    <dd  class="rating">8.7</dd>
+                    <dt>PRODUCER</dt>
+                    <dd  class="producer">Abebe balcha</dd>
+                    <dt>MAIN CHARACTER</dt>
+                    <dd  class="maincharacter">erasu x men nwa</dd>
+                    <dt>YEAR</dt>
+                    <dd  class="year">2017</dd>
+                    <dt>QUALITY</dt>
+                    <dd class="quality">1080HD</dd>
+                    <dt>SIZE</dt>
+                    <dd  class="size">700mb</dd>
+                    </dl>    
+                </div>
+                <img src="css/images/movie1.jpg"/>
+                </div>
+                <div class="gallary">
+                    <div class="detail">
+                <dl>
+                    <dt>TITLE</dt>
+                    <dd  class="title"></dd>
+                    <dt>AUTHOR</dt>
+                    <dd  class="author"></dd>
+                    <dt>GENRES</dt>
+                    <dd class="genres"></dd>
+                    <dt>RATING</dt>
+                    <dd  class="rating"></dd>
+                    <dt>PRODUCER</dt>
+                    <dd  class="producer"></dd>
+                    <dt>MAIN CHARACTER</dt>
+                    <dd  class="maincharacter"></dd>
+                    <dt>YEAR</dt>
+                    <dd  class="year"></dd>
+                    <dt>SIZE</dt>
+                    <dd  class="size"></dd>
+                    </dl>    
+                </div>
+                <img src="css/images/movie2.jpg"/>
+                </div>
+            <div class="gallary">
+                <div class="detail">
+                <dl>
+                    <dt>TITLE</dt>
+                    <dd  class="title"></dd>
+                    <dt>AUTHOR</dt>
+                    <dd  class="author"></dd>
+                    <dt>GENRES</dt>
+                    <dd class="genres"></dd>
+                    <dt>RATING</dt>
+                    <dd  class="rating"></dd>
+                    <dt>PRODUCER</dt>
+                    <dd  class="producer"></dd>
+                    <dt>MAIN CHARACTER</dt>
+                    <dd  class="maincharacter"></dd>
+                    <dt>YEAR</dt>
+                    <dd  class="year"></dd>
+                    <dt>SIZE</dt>
+                    <dd  class="size"></dd>
+                    </dl>    
+                </div>
+                <img src="css/images/movie3.jpg"/>
+                </div>
+            <div class="gallary">
+                 <div class="detail">
+                <dl>
+                    <dt>TITLE</dt>
+                    <dd  class="title"></dd>
+                    <dt>AUTHOR</dt>
+                    <dd  class="author"></dd>
+                     <dt>GENRES</dt>
+                    <dd class="genres"></dd>
+                    <dt>RATING</dt>
+                    <dd  class="rating"></dd>
+                    <dt>PRODUCER</dt>
+                    <dd  class="producer"></dd>
+                    <dt>MAIN CHARACTER</dt>
+                    <dd  class="maincharacter"></dd>
+                    <dt>YEAR</dt>
+                    <dd  class="year"></dd>
+                    <dt>SIZE</dt>
+                    <dd  class="size"></dd>
+                    </dl>    
+                </div>
+                <img src="css/images/movie4.jpg"/>
+                </div>
+                    <div class="gallary">
+                 <div class="detail">
+                <dl>
+                    <dt>TITLE</dt>
+                    <dd  class="title"></dd>
+                    <dt>AUTHOR</dt>
+                    <dd  class="author"></dd>
+                    <dt>GENRES</dt>
+                    <dd class="genres"></dd>
+                    <dt>RATING</dt>
+                    <dd  class="rating"></dd>
+                    <dt>PRODUCER</dt>
+                    <dd  class="producer"></dd>
+                    <dt>MAIN CHARACTER</dt>
+                    <dd  class="maincharacter"></dd>
+                    <dt>YEAR</dt>
+                    <dd  class="year"></dd>
+                    <dt>SIZE</dt>
+                    <dd  class="size"></dd>
+                    </dl>    
+                </div>
+                <img src="css/images/movie5.jpg"/>
+                </div>
+                <div class="gallary">
+                    <div class="detail">
+                   <dl>
+                       <dt>TITLE</dt>
+                       <dd  class="title"></dd>
+                       <dt>AUTHOR</dt>
+                       <dd  class="author"></dd>
+                       <dt>GENRES</dt>
+                       <dd class="genres"></dd>
+                       <dt>RATING</dt>
+                       <dd  class="rating"></dd>
+                       <dt>PRODUCER</dt>
+                       <dd  class="producer"></dd>
+                       <dt>MAIN CHARACTER</dt>
+                       <dd  class="maincharacter"></dd>
+                       <dt>YEAR</dt>
+                       <dd  class="year"></dd>
+                       <dt>SIZE</dt>
+                       <dd  class="size"></dd>
+                       </dl>    
+                   </div>
+                   <img src="css/images/movie15.jpg"/>
+                   </div>
+                   <div class="gallary">
+                    <div class="detail">
+                   <dl>
+                       <dt>TITLE</dt>
+                       <dd  class="title"></dd>
+                       <dt>AUTHOR</dt>
+                       <dd  class="author"></dd>
+                       <dt>GENRES</dt>
+                       <dd class="genres"></dd>
+                       <dt>RATING</dt>
+                       <dd  class="rating"></dd>
+                       <dt>PRODUCER</dt>
+                       <dd  class="producer"></dd>
+                       <dt>MAIN CHARACTER</dt>
+                       <dd  class="maincharacter"></dd>
+                       <dt>YEAR</dt>
+                       <dd  class="year"></dd>
+                       <dt>SIZE</dt>
+                       <dd  class="size"></dd>
+                       </dl>    
+                   </div>
+                   <img src="css/images/movie16.jpg"/>
+                   </div>
+                   <div class="gallary">
+                    <div class="detail">
+                   <dl>
+                       <dt>TITLE</dt>
+                       <dd  class="title"></dd>
+                       <dt>AUTHOR</dt>
+                       <dd  class="author"></dd>
+                       <dt>GENRES</dt>
+                       <dd class="genres"></dd>
+                       <dt>RATING</dt>
+                       <dd  class="rating"></dd>
+                       <dt>PRODUCER</dt>
+                       <dd  class="producer"></dd>
+                       <dt>MAIN CHARACTER</dt>
+                       <dd  class="maincharacter"></dd>
+                       <dt>YEAR</dt>
+                       <dd  class="year"></dd>
+                       <dt>SIZE</dt>
+                       <dd  class="size"></dd>
+                       </dl>    
+                   </div>
+                   <img src="css/images/movie9.jpg"/>
+                   </div>
+                   <div class="gallary">
+                    <div class="detail">
+                   <dl>
+                       <dt>TITLE</dt>
+                       <dd  class="title"></dd>
+                       <dt>AUTHOR</dt>
+                       <dd  class="author"></dd>
+                       <dt>GENRES</dt>
+                       <dd class="genres"></dd>
+                       <dt>RATING</dt>
+                       <dd  class="rating"></dd>
+                       <dt>PRODUCER</dt>
+                       <dd  class="producer"></dd>
+                       <dt>MAIN CHARACTER</dt>
+                       <dd  class="maincharacter"></dd>
+                       <dt>YEAR</dt>
+                       <dd  class="year"></dd>
+                       <dt>SIZE</dt>
+                       <dd  class="size"></dd>
+                       </dl>    
+                   </div>
+                   <img src="css/images/movie7.jpg"/>
+                   </div>
+                   <div class="gallary">
+                    <div class="detail">
+                   <dl>
+                       <dt>TITLE</dt>
+                       <dd  class="title"></dd>
+                       <dt>AUTHOR</dt>
+                       <dd  class="author"></dd>
+                       <dt>GENRES</dt>
+                       <dd class="genres"></dd>
+                       <dt>RATING</dt>
+                       <dd  class="rating"></dd>
+                       <dt>PRODUCER</dt>
+                       <dd  class="producer"></dd>
+                       <dt>MAIN CHARACTER</dt>
+                       <dd  class="maincharacter"></dd>
+                       <dt>YEAR</dt>
+                       <dd  class="year"></dd>
+                       <dt>SIZE</dt>
+                       <dd  class="size"></dd>
+                       </dl>    
+                   </div>
+                   <img src="css/images/movie13.jpg"/>
+                   </div>
+                    
+            </div>
+            <div class="album">
+                <div class="gallary">
+            <div class="detail">
+            <dl>
+                <dt>TITLE</dt>
+                <dd  class="title">X-MEN</dd>
+                <dt>AUTHOR</dt>
+                <dd  class="author">Natnael Mengistu</dd>
+                <dt>GENRES</dt>
+                <dd class="genres">Action</dd>
+                <dt>RATING</dt>
+                <dd  class="rating">8.7</dd>
+                <dt>PRODUCER</dt>
+                <dd  class="producer">Abebe balcha</dd>
+                <dt>MAIN CHARACTER</dt>
+                <dd  class="maincharacter">erasu x men nwa</dd>
+                <dt>YEAR</dt>
+                <dd  class="year">2017</dd>
+                <dt>QUALITY</dt>
+                <dd class="quality">1080HD</dd>
+                <dt>SIZE</dt>
+                <dd  class="size">700mb</dd>
+                </dl>    
+            </div>
+            <img src="css/images/movie1.jpg"/>
+            </div>
+            <div class="gallary">
+                <div class="detail">
+            <dl>
+                <dt>TITLE</dt>
+                <dd  class="title"></dd>
+                <dt>AUTHOR</dt>
+                <dd  class="author"></dd>
+                <dt>GENRES</dt>
+                <dd class="genres"></dd>
+                <dt>RATING</dt>
+                <dd  class="rating"></dd>
+                <dt>PRODUCER</dt>
+                <dd  class="producer"></dd>
+                <dt>MAIN CHARACTER</dt>
+                <dd  class="maincharacter"></dd>
+                <dt>YEAR</dt>
+                <dd  class="year"></dd>
+                <dt>SIZE</dt>
+                <dd  class="size"></dd>
+                </dl>    
+            </div>
+            <img src="css/images/movie2.jpg"/>
+            </div>
+        <div class="gallary">
+            <div class="detail">
+            <dl>
+                <dt>TITLE</dt>
+                <dd  class="title"></dd>
+                <dt>AUTHOR</dt>
+                <dd  class="author"></dd>
+                <dt>GENRES</dt>
+                <dd class="genres"></dd>
+                <dt>RATING</dt>
+                <dd  class="rating"></dd>
+                <dt>PRODUCER</dt>
+                <dd  class="producer"></dd>
+                <dt>MAIN CHARACTER</dt>
+                <dd  class="maincharacter"></dd>
+                <dt>YEAR</dt>
+                <dd  class="year"></dd>
+                <dt>SIZE</dt>
+                <dd  class="size"></dd>
+                </dl>    
+            </div>
+            <img src="css/images/movie3.jpg"/>
+            </div>
+        <div class="gallary">
+             <div class="detail">
+            <dl>
+                <dt>TITLE</dt>
+                <dd  class="title"></dd>
+                <dt>AUTHOR</dt>
+                <dd  class="author"></dd>
+                 <dt>GENRES</dt>
+                <dd class="genres"></dd>
+                <dt>RATING</dt>
+                <dd  class="rating"></dd>
+                <dt>PRODUCER</dt>
+                <dd  class="producer"></dd>
+                <dt>MAIN CHARACTER</dt>
+                <dd  class="maincharacter"></dd>
+                <dt>YEAR</dt>
+                <dd  class="year"></dd>
+                <dt>SIZE</dt>
+                <dd  class="size"></dd>
+                </dl>    
+            </div>
+            <img src="css/images/movie4.jpg"/>
+            </div>
+                <div class="gallary">
+             <div class="detail">
+            <dl>
+                <dt>TITLE</dt>
+                <dd  class="title"></dd>
+                <dt>AUTHOR</dt>
+                <dd  class="author"></dd>
+                <dt>GENRES</dt>
+                <dd class="genres"></dd>
+                <dt>RATING</dt>
+                <dd  class="rating"></dd>
+                <dt>PRODUCER</dt>
+                <dd  class="producer"></dd>
+                <dt>MAIN CHARACTER</dt>
+                <dd  class="maincharacter"></dd>
+                <dt>YEAR</dt>
+                <dd  class="year"></dd>
+                <dt>SIZE</dt>
+                <dd  class="size"></dd>
+                </dl>    
+            </div>
+            <img src="css/images/movie5.jpg"/>
+            </div>
+            <div class="gallary">
+                <div class="detail">
+               <dl>
+                   <dt>TITLE</dt>
+                   <dd  class="title"></dd>
+                   <dt>AUTHOR</dt>
+                   <dd  class="author"></dd>
+                   <dt>GENRES</dt>
+                   <dd class="genres"></dd>
+                   <dt>RATING</dt>
+                   <dd  class="rating"></dd>
+                   <dt>PRODUCER</dt>
+                   <dd  class="producer"></dd>
+                   <dt>MAIN CHARACTER</dt>
+                   <dd  class="maincharacter"></dd>
+                   <dt>YEAR</dt>
+                   <dd  class="year"></dd>
+                   <dt>SIZE</dt>
+                   <dd  class="size"></dd>
+                   </dl>    
+               </div>
+               <img src="css/images/movie15.jpg"/>
+               </div>
+               <div class="gallary">
+                <div class="detail">
+               <dl>
+                   <dt>TITLE</dt>
+                   <dd  class="title"></dd>
+                   <dt>AUTHOR</dt>
+                   <dd  class="author"></dd>
+                   <dt>GENRES</dt>
+                   <dd class="genres"></dd>
+                   <dt>RATING</dt>
+                   <dd  class="rating"></dd>
+                   <dt>PRODUCER</dt>
+                   <dd  class="producer"></dd>
+                   <dt>MAIN CHARACTER</dt>
+                   <dd  class="maincharacter"></dd>
+                   <dt>YEAR</dt>
+                   <dd  class="year"></dd>
+                   <dt>SIZE</dt>
+                   <dd  class="size"></dd>
+                   </dl>    
+               </div>
+               <img src="css/images/movie16.jpg"/>
+               </div>
+               <div class="gallary">
+                <div class="detail">
+               <dl>
+                   <dt>TITLE</dt>
+                   <dd  class="title"></dd>
+                   <dt>AUTHOR</dt>
+                   <dd  class="author"></dd>
+                   <dt>GENRES</dt>
+                   <dd class="genres"></dd>
+                   <dt>RATING</dt>
+                   <dd  class="rating"></dd>
+                   <dt>PRODUCER</dt>
+                   <dd  class="producer"></dd>
+                   <dt>MAIN CHARACTER</dt>
+                   <dd  class="maincharacter"></dd>
+                   <dt>YEAR</dt>
+                   <dd  class="year"></dd>
+                   <dt>SIZE</dt>
+                   <dd  class="size"></dd>
+                   </dl>    
+               </div>
+               <img src="css/images/movie9.jpg"/>
+               </div>
+               <div class="gallary">
+                <div class="detail">
+               <dl>
+                   <dt>TITLE</dt>
+                   <dd  class="title"></dd>
+                   <dt>AUTHOR</dt>
+                   <dd  class="author"></dd>
+                   <dt>GENRES</dt>
+                   <dd class="genres"></dd>
+                   <dt>RATING</dt>
+                   <dd  class="rating"></dd>
+                   <dt>PRODUCER</dt>
+                   <dd  class="producer"></dd>
+                   <dt>MAIN CHARACTER</dt>
+                   <dd  class="maincharacter"></dd>
+                   <dt>YEAR</dt>
+                   <dd  class="year"></dd>
+                   <dt>SIZE</dt>
+                   <dd  class="size"></dd>
+                   </dl>    
+               </div>
+               <img src="css/images/movie7.jpg"/>
+               </div>
+               <div class="gallary">
+                <div class="detail">
+               <dl>
+                   <dt>TITLE</dt>
+                   <dd  class="title"></dd>
+                   <dt>AUTHOR</dt>
+                   <dd  class="author"></dd>
+                   <dt>GENRES</dt>
+                   <dd class="genres"></dd>
+                   <dt>RATING</dt>
+                   <dd  class="rating"></dd>
+                   <dt>PRODUCER</dt>
+                   <dd  class="producer"></dd>
+                   <dt>MAIN CHARACTER</dt>
+                   <dd  class="maincharacter"></dd>
+                   <dt>YEAR</dt>
+                   <dd  class="year"></dd>
+                   <dt>SIZE</dt>
+                   <dd  class="size"></dd>
+                   </dl>    
+               </div>
+               <img src="css/images/movie13.jpg"/>
+               </div>
+                
+        </div>
+        <div class="album">
+            <div class="gallary">
+        <div class="detail">
+        <dl>
+            <dt>TITLE</dt>
+            <dd  class="title">X-MEN</dd>
+            <dt>AUTHOR</dt>
+            <dd  class="author">Natnael Mengistu</dd>
+            <dt>GENRES</dt>
+            <dd class="genres">Action</dd>
+            <dt>RATING</dt>
+            <dd  class="rating">8.7</dd>
+            <dt>PRODUCER</dt>
+            <dd  class="producer">Abebe balcha</dd>
+            <dt>MAIN CHARACTER</dt>
+            <dd  class="maincharacter">erasu x men nwa</dd>
+            <dt>YEAR</dt>
+            <dd  class="year">2017</dd>
+            <dt>QUALITY</dt>
+            <dd class="quality">1080HD</dd>
+            <dt>SIZE</dt>
+            <dd  class="size">700mb</dd>
+            </dl>    
+        </div>
+        <img src="css/images/movie1.jpg"/>
+        </div>
+        <div class="gallary">
+            <div class="detail">
+        <dl>
+            <dt>TITLE</dt>
+            <dd  class="title"></dd>
+            <dt>AUTHOR</dt>
+            <dd  class="author"></dd>
+            <dt>GENRES</dt>
+            <dd class="genres"></dd>
+            <dt>RATING</dt>
+            <dd  class="rating"></dd>
+            <dt>PRODUCER</dt>
+            <dd  class="producer"></dd>
+            <dt>MAIN CHARACTER</dt>
+            <dd  class="maincharacter"></dd>
+            <dt>YEAR</dt>
+            <dd  class="year"></dd>
+            <dt>SIZE</dt>
+            <dd  class="size"></dd>
+            </dl>    
+        </div>
+        <img src="css/images/movie2.jpg"/>
+        </div>
+    <div class="gallary">
+        <div class="detail">
+        <dl>
+            <dt>TITLE</dt>
+            <dd  class="title"></dd>
+            <dt>AUTHOR</dt>
+            <dd  class="author"></dd>
+            <dt>GENRES</dt>
+            <dd class="genres"></dd>
+            <dt>RATING</dt>
+            <dd  class="rating"></dd>
+            <dt>PRODUCER</dt>
+            <dd  class="producer"></dd>
+            <dt>MAIN CHARACTER</dt>
+            <dd  class="maincharacter"></dd>
+            <dt>YEAR</dt>
+            <dd  class="year"></dd>
+            <dt>SIZE</dt>
+            <dd  class="size"></dd>
+            </dl>    
+        </div>
+        <img src="css/images/movie3.jpg"/>
+        </div>
+    <div class="gallary">
+         <div class="detail">
+        <dl>
+            <dt>TITLE</dt>
+            <dd  class="title"></dd>
+            <dt>AUTHOR</dt>
+            <dd  class="author"></dd>
+             <dt>GENRES</dt>
+            <dd class="genres"></dd>
+            <dt>RATING</dt>
+            <dd  class="rating"></dd>
+            <dt>PRODUCER</dt>
+            <dd  class="producer"></dd>
+            <dt>MAIN CHARACTER</dt>
+            <dd  class="maincharacter"></dd>
+            <dt>YEAR</dt>
+            <dd  class="year"></dd>
+            <dt>SIZE</dt>
+            <dd  class="size"></dd>
+            </dl>    
+        </div>
+        <img src="css/images/movie4.jpg"/>
+        </div>
+            <div class="gallary">
+         <div class="detail">
+        <dl>
+            <dt>TITLE</dt>
+            <dd  class="title"></dd>
+            <dt>AUTHOR</dt>
+            <dd  class="author"></dd>
+            <dt>GENRES</dt>
+            <dd class="genres"></dd>
+            <dt>RATING</dt>
+            <dd  class="rating"></dd>
+            <dt>PRODUCER</dt>
+            <dd  class="producer"></dd>
+            <dt>MAIN CHARACTER</dt>
+            <dd  class="maincharacter"></dd>
+            <dt>YEAR</dt>
+            <dd  class="year"></dd>
+            <dt>SIZE</dt>
+            <dd  class="size"></dd>
+            </dl>    
+        </div>
+        <img src="css/images/movie5.jpg"/>
+        </div>
+        <div class="gallary">
+            <div class="detail">
+           <dl>
+               <dt>TITLE</dt>
+               <dd  class="title"></dd>
+               <dt>AUTHOR</dt>
+               <dd  class="author"></dd>
+               <dt>GENRES</dt>
+               <dd class="genres"></dd>
+               <dt>RATING</dt>
+               <dd  class="rating"></dd>
+               <dt>PRODUCER</dt>
+               <dd  class="producer"></dd>
+               <dt>MAIN CHARACTER</dt>
+               <dd  class="maincharacter"></dd>
+               <dt>YEAR</dt>
+               <dd  class="year"></dd>
+               <dt>SIZE</dt>
+               <dd  class="size"></dd>
+               </dl>    
+           </div>
+           <img src="css/images/movie15.jpg"/>
+           </div>
+           <div class="gallary">
+            <div class="detail">
+           <dl>
+               <dt>TITLE</dt>
+               <dd  class="title"></dd>
+               <dt>AUTHOR</dt>
+               <dd  class="author"></dd>
+               <dt>GENRES</dt>
+               <dd class="genres"></dd>
+               <dt>RATING</dt>
+               <dd  class="rating"></dd>
+               <dt>PRODUCER</dt>
+               <dd  class="producer"></dd>
+               <dt>MAIN CHARACTER</dt>
+               <dd  class="maincharacter"></dd>
+               <dt>YEAR</dt>
+               <dd  class="year"></dd>
+               <dt>SIZE</dt>
+               <dd  class="size"></dd>
+               </dl>    
+           </div>
+           <img src="css/images/movie16.jpg"/>
+           </div>
+           <div class="gallary">
+            <div class="detail">
+           <dl>
+               <dt>TITLE</dt>
+               <dd  class="title"></dd>
+               <dt>AUTHOR</dt>
+               <dd  class="author"></dd>
+               <dt>GENRES</dt>
+               <dd class="genres"></dd>
+               <dt>RATING</dt>
+               <dd  class="rating"></dd>
+               <dt>PRODUCER</dt>
+               <dd  class="producer"></dd>
+               <dt>MAIN CHARACTER</dt>
+               <dd  class="maincharacter"></dd>
+               <dt>YEAR</dt>
+               <dd  class="year"></dd>
+               <dt>SIZE</dt>
+               <dd  class="size"></dd>
+               </dl>    
+           </div>
+           <img src="css/images/movie9.jpg"/>
+           </div>
+           <div class="gallary">
+            <div class="detail">
+           <dl>
+               <dt>TITLE</dt>
+               <dd  class="title"></dd>
+               <dt>AUTHOR</dt>
+               <dd  class="author"></dd>
+               <dt>GENRES</dt>
+               <dd class="genres"></dd>
+               <dt>RATING</dt>
+               <dd  class="rating"></dd>
+               <dt>PRODUCER</dt>
+               <dd  class="producer"></dd>
+               <dt>MAIN CHARACTER</dt>
+               <dd  class="maincharacter"></dd>
+               <dt>YEAR</dt>
+               <dd  class="year"></dd>
+               <dt>SIZE</dt>
+               <dd  class="size"></dd>
+               </dl>    
+           </div>
+           <img src="css/images/movie7.jpg"/>
+           </div>
+           <div class="gallary">
+            <div class="detail">
+           <dl>
+               <dt>TITLE</dt>
+               <dd  class="title"></dd>
+               <dt>AUTHOR</dt>
+               <dd  class="author"></dd>
+               <dt>GENRES</dt>
+               <dd class="genres"></dd>
+               <dt>RATING</dt>
+               <dd  class="rating"></dd>
+               <dt>PRODUCER</dt>
+               <dd  class="producer"></dd>
+               <dt>MAIN CHARACTER</dt>
+               <dd  class="maincharacter"></dd>
+               <dt>YEAR</dt>
+               <dd  class="year"></dd>
+               <dt>SIZE</dt>
+               <dd  class="size"></dd>
+               </dl>    
+           </div>
+           <img src="css/images/movie13.jpg"/>
+           </div>
+            
+    </div>
+    <div class="album">
+        <div class="gallary">
+    <div class="detail">
+    <dl>
+        <dt>TITLE</dt>
+        <dd  class="title">X-MEN</dd>
+        <dt>AUTHOR</dt>
+        <dd  class="author">Natnael Mengistu</dd>
+        <dt>GENRES</dt>
+        <dd class="genres">Action</dd>
+        <dt>RATING</dt>
+        <dd  class="rating">8.7</dd>
+        <dt>PRODUCER</dt>
+        <dd  class="producer">Abebe balcha</dd>
+        <dt>MAIN CHARACTER</dt>
+        <dd  class="maincharacter">erasu x men nwa</dd>
+        <dt>YEAR</dt>
+        <dd  class="year">2017</dd>
+        <dt>QUALITY</dt>
+        <dd class="quality">1080HD</dd>
+        <dt>SIZE</dt>
+        <dd  class="size">700mb</dd>
+        </dl>    
+    </div>
+    <img src="css/images/movie1.jpg"/>
+    </div>
+    <div class="gallary">
+        <div class="detail">
+    <dl>
+        <dt>TITLE</dt>
+        <dd  class="title"></dd>
+        <dt>AUTHOR</dt>
+        <dd  class="author"></dd>
+        <dt>GENRES</dt>
+        <dd class="genres"></dd>
+        <dt>RATING</dt>
+        <dd  class="rating"></dd>
+        <dt>PRODUCER</dt>
+        <dd  class="producer"></dd>
+        <dt>MAIN CHARACTER</dt>
+        <dd  class="maincharacter"></dd>
+        <dt>YEAR</dt>
+        <dd  class="year"></dd>
+        <dt>SIZE</dt>
+        <dd  class="size"></dd>
+        </dl>    
+    </div>
+    <img src="css/images/movie2.jpg"/>
+    </div>
+<div class="gallary">
+    <div class="detail">
+    <dl>
+        <dt>TITLE</dt>
+        <dd  class="title"></dd>
+        <dt>AUTHOR</dt>
+        <dd  class="author"></dd>
+        <dt>GENRES</dt>
+        <dd class="genres"></dd>
+        <dt>RATING</dt>
+        <dd  class="rating"></dd>
+        <dt>PRODUCER</dt>
+        <dd  class="producer"></dd>
+        <dt>MAIN CHARACTER</dt>
+        <dd  class="maincharacter"></dd>
+        <dt>YEAR</dt>
+        <dd  class="year"></dd>
+        <dt>SIZE</dt>
+        <dd  class="size"></dd>
+        </dl>    
+    </div>
+    <img src="css/images/movie3.jpg"/>
+    </div>
+<div class="gallary">
+     <div class="detail">
+    <dl>
+        <dt>TITLE</dt>
+        <dd  class="title"></dd>
+        <dt>AUTHOR</dt>
+        <dd  class="author"></dd>
+         <dt>GENRES</dt>
+        <dd class="genres"></dd>
+        <dt>RATING</dt>
+        <dd  class="rating"></dd>
+        <dt>PRODUCER</dt>
+        <dd  class="producer"></dd>
+        <dt>MAIN CHARACTER</dt>
+        <dd  class="maincharacter"></dd>
+        <dt>YEAR</dt>
+        <dd  class="year"></dd>
+        <dt>SIZE</dt>
+        <dd  class="size"></dd>
+        </dl>    
+    </div>
+    <img src="css/images/movie4.jpg"/>
+    </div>
+        <div class="gallary">
+     <div class="detail">
+    <dl>
+        <dt>TITLE</dt>
+        <dd  class="title"></dd>
+        <dt>AUTHOR</dt>
+        <dd  class="author"></dd>
+        <dt>GENRES</dt>
+        <dd class="genres"></dd>
+        <dt>RATING</dt>
+        <dd  class="rating"></dd>
+        <dt>PRODUCER</dt>
+        <dd  class="producer"></dd>
+        <dt>MAIN CHARACTER</dt>
+        <dd  class="maincharacter"></dd>
+        <dt>YEAR</dt>
+        <dd  class="year"></dd>
+        <dt>SIZE</dt>
+        <dd  class="size"></dd>
+        </dl>    
+    </div>
+    <img src="css/images/movie5.jpg"/>
+    </div>
+    <div class="gallary">
+        <div class="detail">
+       <dl>
+           <dt>TITLE</dt>
+           <dd  class="title"></dd>
+           <dt>AUTHOR</dt>
+           <dd  class="author"></dd>
+           <dt>GENRES</dt>
+           <dd class="genres"></dd>
+           <dt>RATING</dt>
+           <dd  class="rating"></dd>
+           <dt>PRODUCER</dt>
+           <dd  class="producer"></dd>
+           <dt>MAIN CHARACTER</dt>
+           <dd  class="maincharacter"></dd>
+           <dt>YEAR</dt>
+           <dd  class="year"></dd>
+           <dt>SIZE</dt>
+           <dd  class="size"></dd>
+           </dl>    
+       </div>
+       <img src="css/images/movie15.jpg"/>
+       </div>
+       <div class="gallary">
+        <div class="detail">
+       <dl>
+           <dt>TITLE</dt>
+           <dd  class="title"></dd>
+           <dt>AUTHOR</dt>
+           <dd  class="author"></dd>
+           <dt>GENRES</dt>
+           <dd class="genres"></dd>
+           <dt>RATING</dt>
+           <dd  class="rating"></dd>
+           <dt>PRODUCER</dt>
+           <dd  class="producer"></dd>
+           <dt>MAIN CHARACTER</dt>
+           <dd  class="maincharacter"></dd>
+           <dt>YEAR</dt>
+           <dd  class="year"></dd>
+           <dt>SIZE</dt>
+           <dd  class="size"></dd>
+           </dl>    
+       </div>
+       <img src="css/images/movie16.jpg"/>
+       </div>
+       <div class="gallary">
+        <div class="detail">
+       <dl>
+           <dt>TITLE</dt>
+           <dd  class="title"></dd>
+           <dt>AUTHOR</dt>
+           <dd  class="author"></dd>
+           <dt>GENRES</dt>
+           <dd class="genres"></dd>
+           <dt>RATING</dt>
+           <dd  class="rating"></dd>
+           <dt>PRODUCER</dt>
+           <dd  class="producer"></dd>
+           <dt>MAIN CHARACTER</dt>
+           <dd  class="maincharacter"></dd>
+           <dt>YEAR</dt>
+           <dd  class="year"></dd>
+           <dt>SIZE</dt>
+           <dd  class="size"></dd>
+           </dl>    
+       </div>
+       <img src="css/images/movie9.jpg"/>
+       </div>
+       <div class="gallary">
+        <div class="detail">
+       <dl>
+           <dt>TITLE</dt>
+           <dd  class="title"></dd>
+           <dt>AUTHOR</dt>
+           <dd  class="author"></dd>
+           <dt>GENRES</dt>
+           <dd class="genres"></dd>
+           <dt>RATING</dt>
+           <dd  class="rating"></dd>
+           <dt>PRODUCER</dt>
+           <dd  class="producer"></dd>
+           <dt>MAIN CHARACTER</dt>
+           <dd  class="maincharacter"></dd>
+           <dt>YEAR</dt>
+           <dd  class="year"></dd>
+           <dt>SIZE</dt>
+           <dd  class="size"></dd>
+           </dl>    
+       </div>
+       <img src="css/images/movie7.jpg"/>
+       </div>
+       <div class="gallary">
+        <div class="detail">
+       <dl>
+           <dt>TITLE</dt>
+           <dd  class="title"></dd>
+           <dt>AUTHOR</dt>
+           <dd  class="author"></dd>
+           <dt>GENRES</dt>
+           <dd class="genres"></dd>
+           <dt>RATING</dt>
+           <dd  class="rating"></dd>
+           <dt>PRODUCER</dt>
+           <dd  class="producer"></dd>
+           <dt>MAIN CHARACTER</dt>
+           <dd  class="maincharacter"></dd>
+           <dt>YEAR</dt>
+           <dd  class="year"></dd>
+           <dt>SIZE</dt>
+           <dd  class="size"></dd>
+           </dl>    
+       </div>
+       <img src="css/images/movie13.jpg"/>
+       </div>
+        
+</div>
+
+            </div>
+            <div class="pagination-container">
+                    <ul class="pagination">
+                        <li><a href="4.html"><</a></li>
+                        <li><a href="all.html">1</a></li>
+                        <li><a href="2.html">2</a></li>
+                        <li><a href="3.html">3</a></li>
+                        <li><a href="4.html">4</a></li>
+                        <li><a href="5.html" class="active">5</a></li>
+                        <li><a href="all.html">></a></li>
+    
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+        <footer>
+             <div class="footer-body">
+            <div class="brand">ZODIAC ENTERTAINMENT</div>
+                <div>
+                <p>Zodiac entertainment home of movies, software and documentaries</p>
+                    <ul>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            </footer>
+    </body>
+</html>
